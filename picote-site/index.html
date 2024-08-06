@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picote - Estética Windows 95</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="barra-principal">
+        <div class="botao-home">
+            <img src="img/logo-picote.png" alt="Logo Picote">
+        </div>
+        <div id="itens-barra-principal" class="itens-barra-principal"></div>
+    </div>
+    
+    <div class="desktop">
+        <div class="icon" onclick="openWindow('audiovisual')">
+            <img src="img/icon-audiovisual.png" alt="Audiovisual">
+            <span>Audiovisual</span>
+        </div>
+        <div class="icon" onclick="openWindow('fotografia')">
+            <img src="img/icon-fotografia.png" alt="Fotografia">
+            <span>Fotografia</span>
+        </div>
+        <div class="icon" onclick="openWindow('notepad')">
+            <img src="img/icon-notepad.png" alt="Sobre Nós">
+            <span>Sobre Nós</span>
+        </div>
+    </div>
+
+    <div id="audiovisual" class="janela">
+        <div class="barra-janela">
+            <img src="img/icon-audiovisual.png" alt="Audiovisual">
+            <span>Audiovisual</span>
+            <button class="close-button" onclick="closeWindow('audiovisual')">X</button>
+        </div>
+        <div class="conteudo-janela">
+            <h1>Audiovisual</h1>
+            <p>Descrição do serviço de audiovisual oferecido pela Picote.</p>
+            <img src="https://via.placeholder.com/300x150" alt="Exemplo Audiovisual">
+            <p>Mais informações sobre o serviço.</p>
+            <button class="cta-button">Entre em contato</button>
+        </div>
+    </div>
+
+    <div id="fotografia" class="janela">
+        <div class="barra-janela">
+            <img src="img/icon-fotografia.png" alt="Fotografia">
+            <span>Fotografia</span>
+            <button class="close-button" onclick="closeWindow('fotografia')">X</button>
+        </div>
+        <div class="conteudo-janela">
+            <h1>Fotografia</h1>
+            <p>Descrição do serviço de fotografia oferecido pela Picote.</p>
+            <img src="https://via.placeholder.com/300x150" alt="Exemplo Fotografia">
+            <p>Mais informações sobre o serviço.</p>
+            <button class="cta-button">Entre em contato</button>
+        </div>
+    </div>
+
+    <div id="notepad" class="janela">
+        <div class="barra-janela">
+            <img src="img/icon-notepad.png" alt="Sobre Nós">
+            <span>Sobre Nós</span>
+            <button class="close-button" onclick="closeWindow('notepad')">X</button>
+        </div>
+        <div class="conteudo-janela">
+            <h1>Sobre Nós</h1>
+            <p>Informações sobre a Picote e sua missão.</p>
+            <img src="https://via.placeholder.com/300x150" alt="Sobre Nós">
+            <p>História e valores da empresa.</p>
+            <button class="cta-button">Entre em contato</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
