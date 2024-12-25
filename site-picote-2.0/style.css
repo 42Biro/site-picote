@@ -1,0 +1,182 @@
+body {
+    background-color: #008080;
+    margin: 0;
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.barra-principal {
+    background-color: #C0C0C0;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    height: 80px; /* Aumentada para ajustar a logo */
+}
+
+.botao-home {
+    background-color: #C0C0C0;
+    width: 100px; /* Ajuste para a logo */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #808080; /* Divisão entre o botão Home e os itens */
+}
+
+.botao-home img {
+    width: 100%;
+    height: auto;
+}
+
+.itens-barra-principal {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.taskbar-item {
+    background-color: #C0C0C0;
+    padding: 5px 10px; /* Espaçamento ajustado */
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.taskbar-item.selected {
+    background-color: #D3D3D3;
+    border: 1px inset #000; /* Estilo de item pressionado */
+}
+
+.desktop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.icon img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.janela {
+    display: none;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.barra-janela {
+    background-color: #000080;
+    color: #FFFFFF;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.barra-janela img {
+    margin-right: 10px; /* Espaçamento ajustado */
+}
+
+.barra-janela span {
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 10px; /* Espaçamento adicional */
+}
+
+.conteudo-janela {
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.close-button {
+    background-color: #C0C0C0;
+    border: none;
+    cursor: pointer;
+    padding: 2px 5px;
+}
+
+.cta-button {
+    background-color: #008080;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #004d40;
+}
+
+/* Estilos para a janela de subcategorias (Curta Metragem) */
+.janela-adicional {
+    display: none;
+    flex-direction: column;
+    background-color: #F0F0F0;
+    border: 1px solid #000;
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding: 10px;
+}
+
+.janela-adicional .barra-janela {
+    background-color: #C0C0C0;
+    color: #000;
+}
+
+/* Janela de fundo da subcategoria */
+.janela-fundo {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 300px;
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    z-index: 1;
+    padding: 10px;
+}
+
+/* Adiciona margens nos itens da lista de subcategorias */
+.janela-adicional ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.janela-adicional ul li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.janela-adicional ul li:hover {
+    background-color: #e0e0e0;
+}
