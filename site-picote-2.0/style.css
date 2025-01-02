@@ -1,5 +1,24 @@
+/* Variáveis CSS */
+:root {
+    --cor-fundo: #008080;
+    --cor-barra: #C0C0C0;
+    --cor-barra-janela: #000080;
+    --cor-texto-barra-janela: #FFFFFF;
+    --cor-item-selecionado: #D3D3D3;
+    --cor-botao-hover: #004d40;
+    --cor-botao: #008080;
+    --cor-fronteira-janela: #000000;
+    --altura-barra-mobile: 60px;
+    --altura-barra-desktop: 80px;
+    --tamanho-icon-mobile: 40px;
+    --tamanho-icon-desktop: 50px;
+    --largura-janela-mobile: 90%;
+    --largura-janela-desktop: 400px;
+}
+
+/* Estilos base - Mobile-first */
 body {
-    background-color: #008080;
+    background-color: var(--cor-fundo);
     margin: 0;
     font-family: "MS Sans Serif", Arial, sans-serif;
     display: flex;
@@ -8,38 +27,39 @@ body {
 }
 
 .barra-principal {
-    background-color: #C0C0C0;
+    background-color: var(--cor-barra);
     display: flex;
     align-items: center;
     padding: 2px;
-    height: 80px; /* Aumentada para ajustar a logo */
+    height: var(--altura-barra-mobile);
 }
 
 .botao-home {
-    background-color: #C0C0C0;
-    width: 100px; /* Ajuste para a logo */
+    background-color: var(--cor-barra);
+    width: var(--altura-barra-mobile);
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid #808080; /* Divisão entre o botão Home e os itens */
+    border-right: 1px solid #808080;
 }
 
 .botao-home img {
-    width: 100%;
+    width: 80%;
     height: auto;
 }
 
 .itens-barra-principal {
     display: flex;
     align-items: center;
-    margin-left: 10px;
+    margin-left: 5px;
+    flex-wrap: wrap;
 }
 
 .taskbar-item {
-    background-color: #C0C0C0;
-    padding: 5px 10px; /* Espaçamento ajustado */
-    margin-right: 5px;
+    background-color: var(--cor-barra);
+    padding: 3px 8px;
+    margin-right: 3px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -47,8 +67,8 @@ body {
 }
 
 .taskbar-item.selected {
-    background-color: #D3D3D3;
-    border: 1px inset #000; /* Estilo de item pressionado */
+    background-color: var(--cor-item-selecionado);
+    border: 1px inset #000;
 }
 
 .desktop {
@@ -56,7 +76,7 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 10px;
     flex-grow: 1;
 }
 
@@ -64,13 +84,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
+    margin: 5px;
     cursor: pointer;
 }
 
 .icon img {
-    width: 50px;
-    height: 50px;
+    width: var(--tamanho-icon-mobile);
+    height: var(--tamanho-icon-mobile);
     margin-bottom: 5px;
 }
 
@@ -78,8 +98,8 @@ body {
     display: none;
     flex-direction: column;
     background-color: #FFFFFF;
-    border: 2px solid #000000;
-    width: 400px;
+    border: 2px solid var(--cor-fronteira-janela);
+    width: var(--largura-janela-mobile);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -87,39 +107,16 @@ body {
 }
 
 .barra-janela {
-    background-color: #000080;
-    color: #FFFFFF;
+    background-color: var(--cor-barra-janela);
+    color: var(--cor-texto-barra-janela);
     padding: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.barra-janela img {
-    margin-right: 10px; /* Espaçamento ajustado */
-}
-
-.barra-janela span {
-    flex-grow: 1;
-    text-align: left;
-    padding-left: 10px; /* Espaçamento adicional */
-}
-
-.conteudo-janela {
-    padding: 10px;
-    overflow-y: auto;
-    max-height: 300px;
-}
-
-.close-button {
-    background-color: #C0C0C0;
-    border: none;
-    cursor: pointer;
-    padding: 2px 5px;
-}
-
 .cta-button {
-    background-color: #008080;
+    background-color: var(--cor-botao);
     color: #FFFFFF;
     border: none;
     padding: 10px;
@@ -127,56 +124,49 @@ body {
 }
 
 .cta-button:hover {
-    background-color: #004d40;
+    background-color: var(--cor-botao-hover);
 }
 
-/* Estilos para a janela de subcategorias (Curta Metragem) */
-.janela-adicional {
-    display: none;
-    flex-direction: column;
-    background-color: #F0F0F0;
-    border: 1px solid #000;
-    width: 300px;
-    height: 200px;
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    padding: 10px;
+/* Media Queries para telas maiores */
+@media (min-width: 768px) {
+    .barra-principal {
+        height: var(--altura-barra-desktop);
+    }
+
+    .botao-home {
+        width: var(--altura-barra-desktop);
+    }
+
+    .botao-home img {
+        width: 100%;
+    }
+
+    .itens-barra-principal {
+        margin-left: 10px;
+    }
+
+    .taskbar-item {
+        padding: 5px 10px;
+        margin-right: 5px;
+    }
+
+    .icon img {
+        width: var(--tamanho-icon-desktop);
+        height: var(--tamanho-icon-desktop);
+    }
+
+    .janela {
+        width: var(--largura-janela-desktop);
+    }
 }
 
-.janela-adicional .barra-janela {
-    background-color: #C0C0C0;
-    color: #000;
-}
+/* Media Queries para telas muito grandes */
+@media (min-width: 1024px) {
+    .desktop {
+        padding: 20px;
+    }
 
-/* Janela de fundo da subcategoria */
-.janela-fundo {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 300px;
-    background-color: #FFFFFF;
-    border: 2px solid #000000;
-    z-index: 1;
-    padding: 10px;
-}
-
-/* Adiciona margens nos itens da lista de subcategorias */
-.janela-adicional ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.janela-adicional ul li {
-    padding: 10px;
-    cursor: pointer;
-}
-
-.janela-adicional ul li:hover {
-    background-color: #e0e0e0;
+    .janela {
+        width: 500px;
+    }
 }
