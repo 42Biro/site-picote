@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados da Planilha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dados da Planilha</h1>
+    <div id="sheet-data">
+        Carregando dados...
+    </div>
+    <script>
+        const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRD7cMfiBzVE64ALJH4vFlTMsE7O_e9__eelnjYcIZa7bLzclgtcU6AP2oHrwQqnOfkMfyrHQvMqDkb/pub?output=csv";
+
+        async function fetchSheetData() {
+            try {
+                const response = await fetch(sheetUrl);
+                if (!response.ok) throw new Error("Erro ao carregar os dados.");
+                
+                const csvText = await response.text();
+
+                // Processar os dados CSV
+                const rows = csvText.split("\n").map(row => row.split(","));
+
+                // Renderizar os dados na tabela
+                renderData(rows);
+            } catch (error) {
+                document.getElementById("sheet-data").innerText = "Erro ao carregar os dados.";
+                console.error("Erro ao buscar os dados da planilha:", error);
+            }
+        }
+
+        function renderData(rows) {
+            const container = document.getElementById("sheet-data");
+
+            // Criar a tabela
+            const table = document.createElement("table");
+            const thead = document.createElement("thead");
+            const tbody = document.createElement("tbody");
+
+            // Preencher o cabeçalho
+            const headerRow = document.createElement("tr");
+            rows[0].forEach(header => {
+                const th = document.createElement("th");
+                th.innerText = header.trim();
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+
+            // Preencher o corpo da tabela
+            rows.slice(1).forEach(row => {
+                const tr = document.createElement("tr");
+                row.forEach(cell => {
+                    const td = document.createElement("td");
+                    td.innerText = cell.trim();
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+
+            table.appendChild(thead);
+            table.appendChild(tbody);
+            container.innerHTML = ""; // Limpa o conteúdo de carregamento
+            container.appendChild(table);
+        }
+
+        fetchSheetData();
+    </script>
+</body>
+</html>
