@@ -4,6 +4,14 @@ function openWindow(serviceId) {
     const barraPrincipal = document.getElementById('itens-barra-principal');
     const existingItem = document.querySelector(`#itens-barra-principal .taskbar-item[data-id="${serviceId}"]`);
 
+    // Adapta as dimensões da janela para mobile-first
+    const isMobile = window.innerWidth <= 768;
+    windowElement.style.width = isMobile ? '90%' : '400px';
+    windowElement.style.height = isMobile ? 'auto' : '300px';
+    windowElement.style.top = isMobile ? '15%' : '50%';
+    windowElement.style.left = isMobile ? '5%' : '50%';
+    windowElement.style.transform = isMobile ? 'none' : 'translate(-50%, -50%)';
+
     // Se o item não existir na barra de tarefas, cria um novo
     if (!existingItem) {
         const taskbarItem = document.createElement('div');
@@ -71,4 +79,18 @@ document.querySelectorAll('.janela').forEach(windowElement => {
 document.querySelectorAll('.icon[data-window-id]').forEach(icon => {
     const windowId = icon.dataset.windowId;
     icon.addEventListener('click', () => openWindow(windowId));
+});
+
+// Ajuste responsivo ao redimensionar a janela
+window.addEventListener('resize', () => {
+    document.querySelectorAll('.janela').forEach(windowElement => {
+        if (windowElement.style.display === 'flex') {
+            const isMobile = window.innerWidth <= 768;
+            windowElement.style.width = isMobile ? '90%' : '400px';
+            windowElement.style.height = isMobile ? 'auto' : '300px';
+            windowElement.style.top = isMobile ? '10%' : '50%';
+            windowElement.style.left = isMobile ? '5%' : '50%';
+            windowElement.style.transform = isMobile ? 'none' : 'translate(-50%, -50%)';
+        }
+    });
 });
