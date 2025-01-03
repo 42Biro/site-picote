@@ -88,7 +88,7 @@ window.addEventListener('resize', () => {
             const isMobile = window.innerWidth <= 768;
             windowElement.style.width = isMobile ? '90%' : '400px';
             windowElement.style.height = isMobile ? 'auto' : '300px';
-            windowElement.style.top = isMobile ? '10%' : '50%';
+            windowElement.style.top = isMobile ? '15%' : '50%';
             windowElement.style.left = isMobile ? '5%' : '50%';
             windowElement.style.transform = isMobile ? 'none' : 'translate(-50%, -50%)';
         }
